@@ -1,7 +1,6 @@
 import React from 'react';
-import { json } from 'stream/consumers';
-//import logo from './logo.svg';
-import Boutton from './components/Button/Button'
+
+import Button from './components/Button/Bouton'
 import './App.css';
 
 function App() {
@@ -12,9 +11,9 @@ function App() {
       {/* commentaire  */}
      DEMAT BREIZH
      <hr/>
-     <Boutton/>
-     <Boutton/>
-     <Boutton/>
+     <Button/>
+     <Button/>
+     <Button/>
     </div>
   );
 }
