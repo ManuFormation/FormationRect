@@ -19,7 +19,7 @@ function App() {
      >Hello</Button>
      <Button > <div>TOTO</div><div>titi</div> </Button>     
      <Button> hello<hr/>de lu </Button>
-     <Button/>    
+     <Button>Wild child</Button>  
     </div>
   );
 }
