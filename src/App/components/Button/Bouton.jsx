@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import style from './Bouton.module.css'
 
 function Button(props){
     console.log(props)
-    return <button type={props.type}>{props.children}</button>
+    return <button className={style.Button} type={props.type}>{props.children}</button>
 }
 
 Button.propTypes={
