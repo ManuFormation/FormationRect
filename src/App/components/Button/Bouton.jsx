@@ -6,9 +6,13 @@ function Button(props){
     const [iscliked, setIsCliked] = useState(false)
 
     return (<button
-    className={style.Button+(props.className?' '+props.className:'')}
-     type={props.type}
-    style={{...props.style, backgroundColor:props.bgColor, color: props.color}}    
+    className={`${style.Button}${props.className ? " "+ props.className : ""}${iscliked ? " " + style.clicked : ""}`}
+    type={props.type}
+    style={{
+        ...props.style,
+         backgroundColor:props.bgColor,
+          color: props.color,
+          }}    
     >   
     {props.children}
     </button>
