@@ -8,7 +8,7 @@ function App() {
   /* coment multiligne */
 
 
-  
+
   return (
     <div className="App">
       {/* commentaire  */}
@@ -19,8 +19,13 @@ function App() {
      }} 
      type="button"
      >Hello</Button>
-     <Button > <div>TOTO</div><div>titi</div> </Button>     
+
+     <Button > <div>TOTO</div><div>titi</div> </Button> 
+
      <Button> hello<hr/>de lu </Button>
+
+     <Button bgColor='tomato' color="black">hello<hr/>de lu </Button>
+
      <Button>Wild child</Button>  
     </div>
   );
