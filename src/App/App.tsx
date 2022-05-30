@@ -16,8 +16,7 @@ function App() {
        alert("le bouton est cliké");
      }} 
      type="button"
-
-     >Hella</Button>
+     >Hello</Button>
      <Button > <div>TOTO</div><div>titi</div> </Button>     
      <Button> hello<hr/>de lu </Button>
      <Button/>    
