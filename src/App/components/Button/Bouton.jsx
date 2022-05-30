@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import style from './Bouton.module.css'
 
 function Button(props){
-    const [iscliked, setIsCliked] = useState(false)
+    const [iscliked, setIsCliked] = useState(false);
 
     return (<button
     className={`${style.Button}${props.className ? " "+ props.className : ""}${iscliked ? " " + style.clicked : ""}`}
@@ -12,8 +12,11 @@ function Button(props){
         ...props.style,
          backgroundColor:props.bgColor,
           color: props.color,
-          }}    
-    >   
+          }} 
+          onClick={(evt)=>{
+            setIsCliked(true);
+          }}
+     > 
     {props.children}
     </button>
     );
