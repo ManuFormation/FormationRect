@@ -14,11 +14,12 @@ function App() {
      <hr/>
      <Button action={()=>{
        alert("le bouton est cliké");
-     }} content={buttonContent}
+     }} 
      type="button"
-     >Hello</Button>
-     <Button/>     
-     <Button/>
+
+     >Hella</Button>
+     <Button > <div>TOTO</div><div>titi</div> </Button>     
+     <Button> hello<hr/>de lu </Button>
      <Button/>    
     </div>
   );
