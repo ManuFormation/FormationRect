@@ -10,3 +10,9 @@ background-color: skyblue;
 color: white;
 
 }
+
+.cliked{
+    box-shadow: 5px 5px 15px grey;
+    border: 1px outset grey;
+}
+

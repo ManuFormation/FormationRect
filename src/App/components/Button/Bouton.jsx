@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import style from './Bouton.module.css'
 
 function Button(props){
-    console.log(props)
-    return <button
+    const [iscliked, setIsCliked] = useState(false)
+
+    return (<button
     className={style.Button+(props.className?' '+props.className:'')}
      type={props.type}
     style={{...props.style, backgroundColor:props.bgColor, color: props.color}}    
     >   
-    {props.children}</button>
+    {props.children}
+    </button>
+    );
 }
 
 Button.propTypes={
@@ -33,7 +36,6 @@ export default Button;
 
 
 export function DefaultButton (props){
-
     return (
         <Button {...props} bgColor='skyblue'></Button>
     )
