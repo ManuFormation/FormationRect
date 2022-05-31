@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './components/Button/Bouton';
+import Button from './component/ui/Button/Bouton';
 interface IAppState{
 //message:'hello'|'good bye'|undefined , message present mais peut être vide
 message?:'hello'|'good bye', //message si present prend une valeur obligatoire
