@@ -7,7 +7,7 @@ class App extends Component {
     return <div className='App' style={{textAlign:'center'}}>
         Valeur compterur 1
 
-       <hr />
+       <hr/>
 
       <Button bgColor='tomato'> decr +1</Button>
       <Button bgColor='yellow'> inc -1</Button>
