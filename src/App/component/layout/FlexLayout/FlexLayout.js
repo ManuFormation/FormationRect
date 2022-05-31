@@ -4,7 +4,7 @@ import styles from './FlexLayout.module.css';
 
 const FlexLayout = () => (
   <div className={styles.FlexLayout} data-testid="FlexLayout">
-    FlexLayout Component
+    Layout MemeSvg + MemeForm
   </div>
 );
 

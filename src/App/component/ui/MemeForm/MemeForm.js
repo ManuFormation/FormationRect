@@ -4,7 +4,7 @@ import styles from './MemeForm.module.css';
 
 const MemeForm = () => (
   <div className={styles.MemeForm} data-testid="MemeForm">
-    MemeForm Component
+    MemeForm
   </div>
 );
 

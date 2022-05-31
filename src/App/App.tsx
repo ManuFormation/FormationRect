@@ -1,23 +1,22 @@
-import { MemeSVGViewer } from 'orsys-tjs-meme';
-import { DummyMeme, IImage, IMeme } from 'orsys-tjs-meme/dist/interfaces/common';
+import { emptyMeme, ImageInterface, MemeInterface, MemeSVGViewer } from 'orsys-tjs-meme';
 import React from 'react';
-import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
 import FlexLayout from './component/layout/FlexLayout/FlexLayout';
-import Button from './component/ui/Button/Bouton';
+
+import Footer from './component/ui/Footer/Footer';
 import Header from './component/ui/Header/Header';
 import MemeForm from './component/ui/MemeForm/MemeForm';
-import NavBar from './component/ui/NavBar/NavBar';
+import NavBar from './component/ui/Navbar/Navbar';
 interface IAppProps{}
 interface IAppState{
-  currentMeme:IMeme,
-  images:Array<IImage>
+  currentMeme:MemeInterface,
+  images:Array<ImageInterface>
 }
 
 class App extends React.Component<IAppProps,IAppState> {
 
   constructor(props:IAppProps){
    super(props)
-   this.state={currentMeme:DummyMeme, images:[] };
+   this.state={currentMeme:emptyMeme, images:[] };
   }
    render() {
     return <div className='App' data-testid="App">
@@ -27,6 +26,7 @@ class App extends React.Component<IAppProps,IAppState> {
          <MemeSVGViewer image={undefined} meme={this.state.currentMeme}/>
          <MemeForm/>
        </FlexLayout>   
+       <Footer/>
      
     </div>    
   }
