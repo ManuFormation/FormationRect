@@ -12,6 +12,11 @@ const MemeForm  = (props) => {
             id="f_titre"
             placeholder="saisir titre"
             value={props.meme.titre}
+            onChange={(evt)=>{
+              console.log(evt.target.value);
+              props.onMemeChange({...props.meme,titre:evt.target.value})            
+
+            }}
              />
           <hr />
           <h2>Image</h2>
@@ -117,7 +122,7 @@ const MemeForm  = (props) => {
                 checked={props.meme.underline}
                 onChange={(evt)=>{
                 console.log(evt.target.value);
-                props.onMemeChange({...props.meme,underline:evt.target.value})         
+                props.onMemeChange({...props.meme,underline:evt.target.checked})         
             
                 }}
 
@@ -132,7 +137,7 @@ const MemeForm  = (props) => {
                 checked={props.meme.italic}
                 onChange={(evt)=>{
                 console.log(evt.target.value);
-                props.onMemeChange({...props.meme,italic:evt.target.value})         
+                props.onMemeChange({...props.meme,italic:evt.target.checked})         
             
                 }}
 
