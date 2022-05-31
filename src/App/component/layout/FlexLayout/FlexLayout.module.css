@@ -2,6 +2,6 @@
     display: flex;
     height: calc(90vh - 70px);
 }
-.Flex>*:first-child{
+.FlexLayout>*:first-child{
     flex-grow: 1;
 }

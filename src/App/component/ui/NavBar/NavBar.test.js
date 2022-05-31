@@ -7,8 +7,8 @@ describe('<Navbar />', () => {
   test('it should mount', () => {
     render(<Navbar />);
     
-    const navBar = screen.getByTestId('NavBar');
+    const NavBar = screen.getByTestId('NavBar');
 
-    expect(navBar).toBeInTheDocument();
+    expect(NavBar).toBeInTheDocument();
   });
 });
