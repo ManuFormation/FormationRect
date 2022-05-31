@@ -9,8 +9,8 @@ class App extends Component {
 
        <hr/>
 
-      <Button bgColor='tomato'> decr +1</Button>
-      <Button bgColor='yellow'> inc -1</Button>
+      <Button bgColor='tomato'> decrement -1</Button>
+      <Button bgColor='yellow'> increment +1</Button>
               </div>
     
   }
