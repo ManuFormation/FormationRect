@@ -1,40 +1,33 @@
+import { MemeSVGViewer } from 'orsys-tjs-meme';
+import { DummyMeme, IImage, IMeme } from 'orsys-tjs-meme/dist/interfaces/common';
 import React from 'react';
+import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
+import FlexLayout from './component/layout/FlexLayout/FlexLayout';
 import Button from './component/ui/Button/Bouton';
-interface IAppState{
-//message:'hello'|'good bye'|undefined , message present mais peut être vide
-message?:'hello'|'good bye', //message si present prend une valeur obligatoire
-counter:number,
-}
+import Header from './component/ui/Header/Header';
+import MemeForm from './component/ui/MemeForm/MemeForm';
+import NavBar from './component/ui/NavBar/NavBar';
 interface IAppProps{}
+interface IAppState{
+  currentMeme:IMeme,
+  images:Array<IImage>
+}
 
 class App extends React.Component<IAppProps,IAppState> {
-  
-  constructor(props:{}){
-    super(props);
-    this.state={message:'hello', counter:0}    
-  }
-  componentDidMount(){
-    console.log('Composant app monté')
-  }
-  componentDidUpdate(prevProps:IAppProps, prevState:IAppState){
-    console.log('State post update =>', prevState, this.state);
-    console.log('Props post update =>', prevProps, this.props);
 
+  constructor(props:IAppProps){
+   super(props)
+   this.state={currentMeme:DummyMeme, images:[] };
   }
-
-  render() {
-    return <div className='App' style={{textAlign:'center'}}>
-        Valeur compteur : {this.state.counter}
-        <hr/>
-      <Button action={()=>{
-        this.setState({counter:this.state.counter-1})  
-        console.log(this.state.counter)    
-      }} bgColor='tomato'> decrement-1</Button>
-      
-      <Button action={()=>{
-        this.setState({counter:this.state.counter+1})  
-        console.log(this.state.counter)   
-      }} bgColor='skyblue'>increment+1</Button>
+   render() {
+    return <div className='App' data-testid="App">
+       <Header/>
+       <NavBar/>
+       <FlexLayout>
+         <MemeSVGViewer image={undefined} meme={this.state.currentMeme}/>
+         <MemeForm/>
+       </FlexLayout>   
+     
     </div>    
   }
 }
