@@ -11,6 +11,7 @@ const MemeForm  = (props) => {
             type="text"
             id="f_titre"
             placeholder="saisir titre"
+            value={props.meme.titre}
              />
           <hr />
           <h2>Image</h2>
@@ -24,6 +25,7 @@ const MemeForm  = (props) => {
           <h2>text</h2>
           <input
             type="text"
+            value={props.meme.text}
 
           />
           <div className={styles.half}>
@@ -33,6 +35,7 @@ const MemeForm  = (props) => {
               <input
                 type="number"
                 className={styles.smallInput}
+                value={props.meme.f_x}
 
               />
             </div>
@@ -42,7 +45,7 @@ const MemeForm  = (props) => {
               <input
                 type="number"
                 className={styles.smallInput}
-
+                value={props.meme.f_y}
               />
             </div>
           </div>
@@ -51,6 +54,7 @@ const MemeForm  = (props) => {
           <input
             type="color"
             id="f_color"
+            value={props.meme.f_color}
 
           />
           <div className={styles.half}>
@@ -60,8 +64,9 @@ const MemeForm  = (props) => {
               <input
                 type="number"
                 className={styles.smallInput}
-
+                
                 min={0}
+                value={props.meme.f_sz}
 
               />
             </div>
@@ -74,6 +79,8 @@ const MemeForm  = (props) => {
                 min="100"
                 step="100"
                 max="900"
+                value={props.meme.f_fw}
+
 
               />
             </div>
@@ -85,6 +92,7 @@ const MemeForm  = (props) => {
               <input
                 id="f_underline"
                 type="checkbox"
+                value={props.meme.f_underline}
 
               />
             </div>
@@ -94,6 +102,7 @@ const MemeForm  = (props) => {
               <input
                 id="f_italic"
                 type="checkbox"
+                value={props.meme.f_italic}
 
               />
             </div>
