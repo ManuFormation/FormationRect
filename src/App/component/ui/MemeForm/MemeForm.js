@@ -26,6 +26,11 @@ const MemeForm  = (props) => {
           <input
             type="text"
             value={props.meme.text}
+            onChange={(evt)=>{
+              console.log(evt.target.value);
+              props.onMemeChange({...props.meme,text:evt.target.value})            
+
+            }}
 
           />
           <div className={styles.half}>
