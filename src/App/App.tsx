@@ -1,35 +1,19 @@
-import React from 'react';
-
-import Button from "./components/Button/Bouton";
-//import ButtonStyle from "./components.Button.module.css"
-import './App.css';
-
-function App() {
-  // comment js
-  /* coment multiligne */
+import React, { Component } from 'react';
+import Button from './components/Button/Bouton';
 
 
+class App extends Component {
+  render() {
+    return <div className='App' style={{textAlign:'center'}}>
+        Valeur compterur 1
 
-  return (
-    <div className="App">
-      {/* commentaire  */}
-     DEMAT BREIZH
-     <hr/>
-     <Button action={()=>{
-       alert("le bouton est cliké");
-     }} 
-     type="button"
-     >Hello</Button>
+       <hr />
 
-     <Button > <div>TOTO</div><div>titi</div> </Button> 
-
-     <Button style={{fontWeigth:900,fontSize:'x-large'}}> hello<hr/>de lu </Button>
-
-     <Button bgColor='tomato' color="black">hello<hr/>de lu </Button>
-
-     <Button>Wild child</Button>  
-    </div>
-  );
+      <Button bgColor='tomato'> decr +1</Button>
+      <Button bgColor='yellow'> inc -1</Button>
+              </div>
+    
+  }
 }
 
 export default App;
