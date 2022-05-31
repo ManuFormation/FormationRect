@@ -4,7 +4,7 @@ import style from './Bouton.module.css'
 
 function Button(props){
     const [iscliked, setIsCliked] = useState(false);
-    
+
     useEffect(() => {     
         if(iscliked){
            setTimeout( ()=>{setIsCliked(false);}, 230 );
@@ -22,6 +22,9 @@ function Button(props){
           }} 
           onClick={(evt)=>{
             setIsCliked(true);
+            if(props.action && typeof props.action==='function'){
+            props.action();
+            }
           }}
      > 
     {props.children}

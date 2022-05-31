@@ -1,14 +1,30 @@
-import React, { Component } from 'react';
+import React, {} from 'react';
 import Button from './components/Button/Bouton';
+interface IAppState{
+//message:'hello'|'good bye'|undefined , message present mais peut être vide
+message?:'hello'|'good bye', //message si present prend une valeur obligatoire
+counter:number,
+}
+interface IAppProps{}
 
+class App extends React.Component<IAppProps,IAppState> {
+  
+  constructor(props:{}){
+    super(props);
+    this.state={message:'hello', counter:0}    
+  }
 
-class App extends Component {
   render() {
     return <div className='App' style={{textAlign:'center'}}>
-        Valeur compterur 1
+        Valeur compteur : {this.state.counter}
         <hr/>
-      <Button bgColor='tomato'> decrement -1</Button>
-      <Button bgColor='bluesky'> increment +1</Button>
+      <Button action={()=>{
+        this.setState({counter:this.state.counter-1})      
+      }} bgColor='tomato'> decrement-1</Button>
+      
+      <Button action={()=>{
+        this.setState({counter:this.state.counter+1})     
+      }} bgColor='skyblue'>increment+1</Button>
     </div>
     
   }
