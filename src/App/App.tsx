@@ -8,7 +8,7 @@ class App extends Component {
         Valeur compterur 1
         <hr/>
       <Button bgColor='tomato'> decrement -1</Button>
-      <Button bgColor='yellow'> increment +1</Button>
+      <Button bgColor='bluesky'> increment +1</Button>
     </div>
     
   }
