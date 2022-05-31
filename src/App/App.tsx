@@ -19,14 +19,14 @@ interface IAppState {
 
 const images: Array<ImageInterface> = [
   { id: 0, name: "Batman", h: 500, w: 500, url: "bat.jpg" },
-  { id: 1, name: "Catwomen", h: 500, w: 500, url: "cat.jpg" },
+  { id: 1, name: "Catwoman", h: 1460, w: 830, url: "cat.jpg" },
   { id: 2, name: "Superman", h: 500, w: 500, url: "super.jpg" },
-  { id: 3, name: "Wonderwomen", h: 500, w: 500, url: "wonder.jpg" },
+  { id: 3, name: "Wonderwoman", h: 500, w: 500, url: "wonder.jpg" },
 ];
 class App extends React.Component<IAppProps, IAppState> {
   constructor(props: IAppProps) {
     super(props);
-    this.state = { currentMeme: emptyMeme, images: [] };
+    this.state = { currentMeme: emptyMeme, images: images };
   }
   render() {
     return (
@@ -34,9 +34,12 @@ class App extends React.Component<IAppProps, IAppState> {
         <Header />
         <NavBar />
         <FlexLayout>
-          <MemeSVGViewer image={undefined} meme={this.state.currentMeme} />
+          <MemeSVGViewer image={
+            this.state.images.find(e=>e.id===this.state.currentMeme.imageId)
+           } meme={this.state.currentMeme} basePath='/media/' />
           <MemeForm
             meme={this.state.currentMeme}
+            images={this.state.images}
             onMemeChange={(meme: MemeInterface) => {
               this.setState({ currentMeme: meme });
             }}
