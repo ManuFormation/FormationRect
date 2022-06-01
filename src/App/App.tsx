@@ -1,72 +1,64 @@
-import {
-  emptyMeme,
-  ImageInterface,
-  MemeInterface,
- } from "orsys-tjs-meme";
- import ConnectedMemeSvg from './component/ui/ConnectedMemeSVG/ConnectedMemeSVG';
-import { IMeme } from "orsys-tjs-meme/dist/interfaces/common";
-import React from "react";
+import ConnectedMemeSVG from "./component/ui/ConnectedMemeSVG/ConnectedMemeSVG";
+import React, { useEffect } from "react";
 import FlexLayout from "./component/layout/FlexLayout/FlexLayout";
-
 import Footer from "./component/ui/Footer/Footer";
 import Header from "./component/ui/Header/Header";
-import MemeForm, { ConnectedMemeForm } from "./component/ui/MemeForm/MemeForm";
-import NavBar from "./component/ui/Navbar/Navbar";
+import { ConnectedMemeForm } from "./component/ui/MemeForm/MemeForm";
+import Navbar from "./component/ui/Navbar/Navbar";
+import { Route, Routes, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import _store, { ACTIONS_CURRENT } from "./store/store";
+import { MemeInterface } from "orsys-tjs-meme";
+
 interface IAppProps {}
-interface IAppState {
-  currentMeme: MemeInterface;
-  images: Array<ImageInterface>;
-  memes: Array<IMeme>;
-}
 
-const images: Array<ImageInterface> = [
-  { id: 0, name: "Batman", h: 770, w: 577, url: "bat.jpg" },
-  { id: 1, name: "Catwoman", h: 1460, w: 821, url: "cat.jpg" },
-  { id: 2, name: "Superman", h: 1280, w: 720, url: "super.jpg" },
-  { id: 3, name: "Wonderwoman", h: 1200, w: 600, url: "wonder.jpg" },
-];
-class App extends React.Component<IAppProps, IAppState> {
-  constructor(props: IAppProps) {
-    super(props);
-    this.state = { currentMeme: emptyMeme, images: [], memes: [] };
-  }
+const App: React.FC<IAppProps> = (props) => {
+  return (
+    <div className="App" data-testid="App">
+      <Header />
+      <Navbar />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div>
+              Home ..
+              <br />
+              Bienvenu
+            </div>
+          }
+        />
+        <Route path="/editor" element={<MemeEditor />} />
+        <Route path="/editor/:id" element={<MemeEditor />} />
+      </Routes>
+      <Footer />
+    </div>
+  );
+};
 
-  componentDidMount() {
-    const timgs = fetch("http://localhost:8678/images").then((f) => f.json());
-    const tmemes = fetch("http://localhost:8678/memes").then((f) => f.json());
-
-   const all = Promise.all([timgs, tmemes]);
-   
-   const tout = new Promise((resolve) =>{
-     setTimeout(resolve, 1000);
-   })
-   Promise.race([all,tout]).then((arr_arr) =>{
-     if(!Array.isArray(arr_arr)){
-       console.log('time declenché')
-       return;
-     }
-     console.log(arr_arr);
-     this.setState({ memes: arr_arr[1], images: arr_arr[0]});
-   })    
-
-  }
-  render() {
-    return (
-      <div className="App" data-testid="App">
-        <Header />
-        <NavBar />
-        <FlexLayout>
-        < ConnectedMemeSvg
-            image={undefined}           
-          />
-          <ConnectedMemeForm
-            images={this.state.images}           
-          />
-        </FlexLayout>
-        <Footer />
-      </div>
-    );
-  }
-}
-
+const MemeEditor = (props: any) => {
+  const dispatch = useDispatch();
+  const params = useParams();
+const memes =useSelector((state:any) => state.ressources.memes)
+  useEffect(() => {
+    if (undefined !== params.id) {
+      dispatch({
+        type: ACTIONS_CURRENT.UPDATE_CURRENT,
+        value: _store
+          .getState()
+          .ressources.memes.find(
+            (m: MemeInterface) => m.id === Number(params.id)
+          ),
+      });
+    } else {
+      dispatch({ type: ACTIONS_CURRENT.CLEAR_CURRENT });
+    }
+  }, [params, dispatch, memes]);
+  return (
+    <FlexLayout>
+      <ConnectedMemeSVG />
+      <ConnectedMemeForm />
+    </FlexLayout>
+  );
+};
 export default App;

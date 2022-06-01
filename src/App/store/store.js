@@ -76,13 +76,15 @@ const cmbRdc = combineReducers({
   ressources: ressourcesReducer,
 });
 
-const _store = createStore
-(cmbRdc,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const _store = createStore(
+  cmbRdc,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
 
 _store.subscribe(() => {
   console.log(_store.getState());
 });
-// _store.dispatch({type:ACTIONS_CURRENT.UPDATE_CURRENT,value:{text:'Hello de lu'}})
+_store.dispatch({type:'INIT'});
 // _store.dispatch({type:ACTIONS_CURRENT.UPDATE_CURRENT,value:{color:'#F0AB0F'}})
 // _store.dispatch({type:ACTIONS_CURRENT.CLEAR_CURRENT})
 
