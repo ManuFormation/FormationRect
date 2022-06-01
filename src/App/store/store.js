@@ -20,7 +20,7 @@ function currentReducer(state = currentMemeInitialState, action) {
 /**
  * reducer des ressources
  */
-const ADR_REST = "http://localhost:5679";
+const ADR_REST = "http://localhost:8678";
 const REST_RESSOURCES = Object.freeze({ memes: "/memes", images: "/images" });
 const ressourcesInitialState = {
   memes: [],
@@ -73,10 +73,11 @@ const ressourcesReducer = (state = ressourcesInitialState, action) => {
 
 const cmbRdc = combineReducers({
   current: currentReducer,
-  ressource: ressourcesReducer,
+  ressources: ressourcesReducer,
 });
 
-const _store = createStore(currentReducer);
+const _store = createStore
+(cmbRdc,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 _store.subscribe(() => {
   console.log(_store.getState());

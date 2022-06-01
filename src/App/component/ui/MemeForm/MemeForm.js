@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { ACTIONS_CURRENT } from "../../../store/store.js.old";
+import { ACTIONS_CURRENT } from "../../../store/store.js";
 import styles from "./MemeForm.module.css";
 
 const MemeForm = (props) => {
@@ -176,7 +176,8 @@ export default MemeForm;
 function mapStateToProps(storeState, parentProps) {
   return {
     ...parentProps,
-    meme: storeState,
+    meme: storeState.current,
+    images : storeState.ressources.images
   };
 }
 
