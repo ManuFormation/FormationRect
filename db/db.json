@@ -1,0 +1,30 @@
+{
+  "memes": [
+    {"id":"",
+        "currentMeme": {
+          "titre": "",
+          "text": "",
+          "x": 0,
+          "y": 17,
+          "fontWeight": "500",
+          "fontSize": 30,
+          "underline": false,
+          "italic": false,
+          "imageId": 0,
+          "color": "#000000"
+        },
+        "images": [
+          "{h: 770, id: 0, name: \"Batman\", url: \"bat.jpg\", w: …}",
+          "{h: 1460, id: 1, name: \"Catwoman\", url: \"cat.jpg\", …}",
+          "{h: 1280, id: 2, name: \"Superman\", url: \"super.jpg\"…}",
+          "{h: 1200, id: 3, name: \"Wonderwoman\", url: \"wonder.…}"
+        ]
+      }   
+],
+  "images": [
+    { "id": 0, "name": "Batman", "h": 770, "w": 577, "url": "bat.jpg" },
+    { "id": 1, "name": "Catwoman", "h": 1460, "w": 821, "url": "cat.jpg" },
+    { "id": 2, "name": "Superman", "h": 1280, "w": 720, "url": "super.jpg" },
+    { "id": 3, "name": "Wonderwoman", "h": 1200, "w": 600, "url": "wonder.jpg" }
+  ]
+}
