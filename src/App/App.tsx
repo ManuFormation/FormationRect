@@ -18,10 +18,10 @@ interface IAppState {
 }
 
 const images: Array<ImageInterface> = [
-  { id: 0, name: "Batman", h: 500, w: 500, url: "bat.jpg" },
-  { id: 1, name: "Catwoman", h: 1460, w: 830, url: "cat.jpg" },
-  { id: 2, name: "Superman", h: 500, w: 500, url: "super.jpg" },
-  { id: 3, name: "Wonderwoman", h: 500, w: 500, url: "wonder.jpg" },
+  { id: 0, name: "Batman", h: 770, w: 577, url: "bat.jpg" },
+  { id: 1, name: "Catwoman", h: 1460, w: 821, url: "cat.jpg" },
+  { id: 2, name: "Superman", h: 1280, w: 720, url: "super.jpg" },
+  { id: 3, name: "Wonderwoman", h: 1200, w: 600, url: "wonder.jpg" },
 ];
 class App extends React.Component<IAppProps, IAppState> {
   constructor(props: IAppProps) {
