@@ -4,6 +4,7 @@ import {
   MemeInterface,
   MemeSVGViewer,
 } from "orsys-tjs-meme";
+import { IMeme } from "orsys-tjs-meme/dist/interfaces/common";
 import React from "react";
 import FlexLayout from "./component/layout/FlexLayout/FlexLayout";
 
@@ -15,6 +16,7 @@ interface IAppProps {}
 interface IAppState {
   currentMeme: MemeInterface;
   images: Array<ImageInterface>;
+  memes: Array<IMeme>;
 }
 
 const images: Array<ImageInterface> = [
@@ -26,7 +28,27 @@ const images: Array<ImageInterface> = [
 class App extends React.Component<IAppProps, IAppState> {
   constructor(props: IAppProps) {
     super(props);
-    this.state = { currentMeme: emptyMeme, images: images };
+    this.state = { currentMeme: emptyMeme, images: [], memes: [] };
+  }
+
+  componentDidMount() {
+    const timgs = fetch("http://localhost:8678/images").then((f) => f.json());
+    const tmemes = fetch("http://localhost:8678/memes").then((f) => f.json());
+
+   const all = Promise.all([timgs, tmemes]);
+   
+   const tout = new Promise((resolve) =>{
+     setTimeout(resolve, 1000);
+   })
+   Promise.race([all,tout]).then((arr_arr) =>{
+     if(!Array.isArray(arr_arr)){
+       console.log('time declenché')
+       return;
+     }
+     console.log(arr_arr);
+     this.setState({ memes: arr_arr[1], images: arr_arr[0]});
+   })    
+
   }
   render() {
     return (
@@ -34,9 +56,13 @@ class App extends React.Component<IAppProps, IAppState> {
         <Header />
         <NavBar />
         <FlexLayout>
-          <MemeSVGViewer image={
-            this.state.images.find(e=>e.id===this.state.currentMeme.imageId)
-           } meme={this.state.currentMeme} basePath='/media/' />
+          <MemeSVGViewer
+            image={this.state.images.find(
+              (e) => e.id === this.state.currentMeme.imageId
+            )}
+            meme={this.state.currentMeme}
+            basePath="/media/"
+          />
           <MemeForm
             meme={this.state.currentMeme}
             images={this.state.images}
