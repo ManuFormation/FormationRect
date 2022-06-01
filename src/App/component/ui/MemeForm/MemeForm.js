@@ -29,7 +29,7 @@ const MemeForm = (props) => {
         >
           <option value="-1">Aucune</option>
           {props.images.map((e, i) => (
-            <option value={e.id} key={"select-option-" + 1}>
+            <option value={e.id} key={"select-option-" +i}>
               {e.name}
             </option>
           ))}
@@ -51,6 +51,7 @@ const MemeForm = (props) => {
             <input
               type="number"
               className={styles.smallInput}
+              value={props.meme.x}
               onChange={(evt) => {
                 console.log(evt.target.value);
                 props.onMemeChange({
@@ -66,6 +67,7 @@ const MemeForm = (props) => {
             <input
               type="number"
               className={styles.smallInput}
+              value={props.meme.y}
               onChange={(evt) => {
                 console.log(evt.target.value);
                 props.onMemeChange({
@@ -78,7 +80,15 @@ const MemeForm = (props) => {
         </div>
         <hr />
         <label htmlFor="f_color">Couleur</label>
-        <input type="color" id="f_color" value={props.meme.f_color} />
+        <input type="color" id="f_color" value={props.meme.color}
+         onChange={(evt) => {
+                console.log(evt.target.value);
+                props.onMemeChange({
+                  ...props.meme,
+                  color:evt.target.value,
+                });
+         }}
+         />
         <div className={styles.half}>
           <div>
             <label htmlFor="f_sz">font-size:</label>
@@ -87,6 +97,7 @@ const MemeForm = (props) => {
               type="number"
               className={styles.smallInput}
               min={0}
+              value={props.meme.fontSize}
               onChange={(evt) => {
                 console.log(evt.target.value);
                 props.onMemeChange({
