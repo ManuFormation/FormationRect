@@ -1,0 +1,31 @@
+import { emptyMeme } from "orsys-tjs-meme";
+import { createStore } from 'redux'
+
+export const currentMemeInitialState = emptyMeme;
+export const ACTIONS_CURRENT = Object.freeze({
+  UPDATE_CURRENT: "UPDATE_CURRENT",
+  CLEAR_CURRENT: "CLEAR_CURRENT",
+});
+
+function currentReducer(state = currentMemeInitialState, action) {
+  switch (action.type) {
+    case ACTIONS_CURRENT.UPDATE_CURRENT:
+      return { ...state, ...action.value };
+    case ACTIONS_CURRENT.CLEAR_CURRENT:
+      return { ...emptyMeme };
+    default:
+      return state;
+  }
+}
+
+const _store = createStore(currentReducer);
+_store.subscribe(()=>{
+
+})
+
+export default _store;
+
+
+
+
+

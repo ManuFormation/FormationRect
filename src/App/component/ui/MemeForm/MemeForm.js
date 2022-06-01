@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { ACTIONS_CURRENT } from "../../../store/store.js.old";
 import styles from "./MemeForm.module.css";
 
 const MemeForm = (props) => {
@@ -29,7 +31,7 @@ const MemeForm = (props) => {
         >
           <option value="-1">Aucune</option>
           {props.images.map((e, i) => (
-            <option value={e.id} key={"select-option-" +i}>
+            <option value={e.id} key={"select-option-" + i}>
               {e.name}
             </option>
           ))}
@@ -80,15 +82,18 @@ const MemeForm = (props) => {
         </div>
         <hr />
         <label htmlFor="f_color">Couleur</label>
-        <input type="color" id="f_color" value={props.meme.color}
-         onChange={(evt) => {
-                console.log(evt.target.value);
-                props.onMemeChange({
-                  ...props.meme,
-                  color:evt.target.value,
-                });
-         }}
-         />
+        <input
+          type="color"
+          id="f_color"
+          value={props.meme.color}
+          onChange={(evt) => {
+            console.log(evt.target.value);
+            props.onMemeChange({
+              ...props.meme,
+              color: evt.target.value,
+            });
+          }}
+        />
         <div className={styles.half}>
           <div>
             <label htmlFor="f_sz">font-size:</label>
@@ -167,3 +172,23 @@ const MemeForm = (props) => {
   );
 };
 export default MemeForm;
+
+function mapStateToProps(storeState, parentProps) {
+  return {
+    ...parentProps,
+    meme: storeState,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onMemeChange: (meme) => {
+      dispatch({ type: ACTIONS_CURRENT.UPDATE_CURRENT, value: meme });
+    },
+  };
+}
+
+export const ConnectedMemeForm = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MemeForm);
